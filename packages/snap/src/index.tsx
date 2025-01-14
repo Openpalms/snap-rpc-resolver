@@ -133,37 +133,22 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
     }
   };
   // // Резолвим имя через контракт
-  const parsedChainId = chainId.split(':')[1] ?? '1'; // Извлечение числа из строки, например "eip155:1" -> "1"
+  const parsedChainId = chainId.split(':')[1] ?? '1'; // Извлечение нужного айди из чейнайди метамаска "eip155:1" -> "1"
   const resolvedAddress = await resolveDomain(domain, parsedChainId);
 
   if (!resolvedAddress) {
     return null;
   }
 
-  if (resolvedAddress) {
-    return {
-      resolvedAddresses: [
-        {
-          resolvedAddress,
-          protocol: 'Custom Resolver',
-          domainName: domain,
-        },
-      ],
-    };
-    // if (domain === 'scrollelig') {
-    //   return {
-    //     resolvedAddresses: [
-    //       {
-    //         resolvedAddress: '0x1234567890abcdef1234567890abcdef12345678',
-    //         protocol: 'Custom Resolver',
-    //         domainName: domain,
-    //       },
-    //     ],
-    //   };
-    // }
-
-    // return null;
-  }
+  return {
+    resolvedAddresses: [
+      {
+        resolvedAddress,
+        protocol: 'CoLabs Domains',
+        domainName: domain,
+      },
+    ],
+  };
 };
 
 export const onInstall: OnInstallHandler = async () => {
