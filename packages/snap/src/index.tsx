@@ -22,7 +22,7 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
 
     try {
       // const response = await fetch(url);
-
+      // console.log(response);
       // if (!response.ok) {
       //   throw new Error(
       //     `Failed to fetch domain contract: ${response.statusText}`,
@@ -90,7 +90,6 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
         },
       };
       // const result = await response.json();
-
       console.log('======result======', result);
       return result;
     } catch (error) {
